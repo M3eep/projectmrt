@@ -1,0 +1,45 @@
+{% extends "ocr/base.html" %}
+{% block content %}
+<div style="text-align: center;">
+  <h2 id="home-h2"><b>Sie möchten eine neue Rechnung hochladen?<br>Klicken Sie auf <i>Durchsuchen...</i></b></h2>
+  <form id="upload-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="document">
+    <br>
+    <button id="upload-button" type="submit">Hochladen</button>
+  </form>
+  <div class="container" style="text-align: left; margin: 30px 0px 30px 730px;">
+    {% if text %}
+    <p>{{ text }}</p>
+    {% endif %}
+    {% if fehler %}
+    <p style="color: red"><b>{{ fehler }}</b></p>
+    {% endif %}
+    {% if ocr_result %}
+    <p>{{ ocr_result }}</p>
+    {% endif %}
+    {% if summe %}
+    <p>Summe: {{ summe }}</p>
+    {% endif %}
+    {% if mwstsatz %}
+    <p>Mehrwersteuersatz: {{ mwstsatz }}</p>
+    {% endif %}
+    {% if mwstwert %}
+    <p>Mehrwertsteuerbetrag: {{ mwstwert }}</p>
+    {% endif %}
+    {% if nettobetrag %}
+    <p>Nettobetrag: {{ nettobetrag }}</p>
+    {% endif %}
+    {% if datum %}
+    <p>Datum: {{ datum }}</p>
+    {% endif %}
+    {% if airbnb %}
+    <p>Bei Airbnb wird nur Endbruttobetrag erkannt: {{ airbnb }}</p>
+    {% endif %}
+  </div>
+  {% if url %}
+  <!--<p>Hochgeladene Datei: <a href="{{ url }}">{{ url }}</a> </p>-->
+  <img id="upload-img" src="{{ url }}" width="600px" height="auto">
+  {% endif %}
+</div>
+{% endblock content %}

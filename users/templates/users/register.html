@@ -1,0 +1,21 @@
+{% extends "ocr/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Registriere dich heute!</legend>
+      <div id="register">
+        {{ form|crispy }}
+      </div>
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">Registrieren</button>
+    </div>
+  </form>
+  <div class="border-top pt-3">
+    <small class="text-muted">Bereits registriert? <a class="ml-2" href="{% url 'login' %}">Melde dich hier an.</a></small>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bungee">
+    <link rel="stylesheet" type="text/css" href="{% static 'ocr/main.css' %}">
+    {% if title %}
+      <title>OCR - {{ title }}</title>
+    {% else %}
+      <title>OCR</title>
+    {% endif %}
+  </head>
+  <body style="background-color: #ffffff">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1DCA9E;">
+      <a class="navbar-brand" href="{% url 'ocr-home' %}"><img src="/media/logo.png"/></a>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-center">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'ocr-home' %}">Startseite</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'ocr-upload' %}">Upload</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'ocr-about' %}">About</a>
+          </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item inactive">
+              <a class="nav-link" href="{% url 'profile' %}">Dein Profil</a>
+            </li>
+            <li class="nav-item inactive">
+              <a class="nav-item nav-link" href="{% url 'logout' %}">Abmelden</a>
+            </li>
+            {% else %}
+            <li class="nav-item inactive">
+              <a class="nav-item nav-link" href="{% url 'login' %}">Anmelden</a>
+            </li>
+            <li class="nav-item inactive">
+              <a class="nav-item nav-link" href="{% url 'register' %}">Registrieren</a>
+            </li>
+            {% endif %}
+        </div>
+        </ul>
+      </div>
+    </nav>
+      <div>
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
+      </div>
+  </body>
+</html>

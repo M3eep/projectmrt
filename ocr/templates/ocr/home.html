@@ -1,0 +1,16 @@
+{% extends "ocr/base.html" %}
+{% block content %}
+<div style="text-align: center; padding-bottom: 100px">
+  <h2 id="home-h2"><b>Willkommen bei Project MRT!</b></h2>
+  <h3 id="home-h3"><b>Dieses Projekt verfolgt das Ziel, Rechnungen zu automatisieren!<b></b></h3>
+  <h3 id="home-h3"><b>Hier noch eine kurze Anleitung:<b></b></h3>
+  <h1><b>Schritt 1: Fotografiere den Beleg.</b></h1>
+  <img class="unselectable" id="home-img" src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/camera-512.png" height="250" width="250">
+  <h1><b>Schritt 2: Wähle das Bild zum hochladen aus.</b></h1>
+  <img class="unselectable" id="home-img" src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/upload-512.png" height="250" width="250">
+  <h1><b>Schritt 3: Lade das Bild hoch. Es wird automatisch verarbeitet.</b></h1>
+  <img class="unselectable" id="home-img" src="https://cdn4.iconfinder.com/data/icons/miu/24/common-login-enter-signin-outline-stroke-512.png" height="250" width="250">
+  <br>
+  <a href="{% url 'ocr-upload' %}"><button class="btn btn-primary btn-lg" id="home-button" type="button">CLICK HERE TO START</button></a>
+</div>
+{% endblock content %}
